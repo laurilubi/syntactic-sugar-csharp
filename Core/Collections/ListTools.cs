@@ -14,7 +14,8 @@ public static class ListTools
                 .Where(selector)
                 .Select((item, index) => index)
                 .ToList();
-            AssertTools.Assert(indexes.Count < 2, $"Sequence contains {indexes.Count} matches, but 0 or 1 expected.");
+            AssertTools.Assert(indexes.Count < 2,
+                () => $"Sequence contains {indexes.Count} matches, but 0 or 1 expected.");
 
             if (indexes.Count == 0)
                 items.Add(value);

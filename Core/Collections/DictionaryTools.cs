@@ -39,7 +39,7 @@ public static class DictionaryTools
     public static TValue Single<TKey, TValue>(this IDictionary<TKey, TValue> main, TKey key)
     {
         var success = main.TryGetValue(key, out var value);
-        AssertTools.Assert(success, $"Cannot find key={key} in dictionary.");
+        AssertTools.Assert(success, () => $"Cannot find key={key} in dictionary.");
         return value;
     }
 
