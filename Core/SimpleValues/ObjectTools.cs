@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SyntacticSugar.Core;
+namespace SyntacticSugar.Core.SimpleValues;
 
 public static class ObjectTools
 {
