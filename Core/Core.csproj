@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Lauri Lubi</Authors>
+    <Description>Core syntactic sugar for C#</Description>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>SyntacticSugar.Core</AssemblyName>
+    <RootNamespace>SyntacticSugar.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>
