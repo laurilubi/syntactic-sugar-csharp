@@ -5,16 +5,6 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class IntTools
 {
-    public static int GetIntOrDefault(object input, int defaultValue = default)
-    {
-        if (input == null) return defaultValue;
-        if (input is int inputInt) return inputInt;
-        var success = int.TryParse(input.ToString(), out var value);
-        return success
-            ? value
-            : defaultValue;
-    }
-
     public static int? GetIntOrNull(object input)
     {
         if (input == null) return null;
@@ -23,6 +13,12 @@ public static class IntTools
         return success
             ? value
             : null;
+    }
+
+    public static int GetIntOrDefault(object input, int defaultValue = default)
+    {
+        var value = GetIntOrNull(input);
+        return value ?? defaultValue;
     }
 
     public static int GetIntOrThrow(object input) => GetIntOrThrow(input,
