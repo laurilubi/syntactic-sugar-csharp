@@ -5,7 +5,7 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class LongTools
 {
-    public static long? GetLongOrNull(object input)
+    public static long? GetLongOrNull(this object input)
     {
         if (input == null) return null;
         if (input is long inputLong) return inputLong;
@@ -15,16 +15,16 @@ public static class LongTools
             : null;
     }
 
-    public static long GetLongOrDefault(object input, long defaultValue = default)
+    public static long GetLongOrDefault(this object input, long defaultValue = default)
     {
         var value = GetLongOrNull(input);
         return value ?? defaultValue;
     }
 
-    public static long GetLongOrThrow(object input) => GetLongOrThrow(input,
+    public static long GetLongOrThrow(this object input) => GetLongOrThrow(input,
         input => new ModelValidationException($"Value {input} cannot be parsed as long."));
 
-    public static long GetLongOrThrow<TException>(object input, Func<object, TException> createException)
+    public static long GetLongOrThrow<TException>(this object input, Func<object, TException> createException)
         where TException : Exception
     {
         var value = GetLongOrNull(input);

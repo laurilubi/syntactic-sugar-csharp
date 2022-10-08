@@ -5,7 +5,7 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class BoolTools
 {
-    public static bool? GetBoolOrNull(object input)
+    public static bool? GetBoolOrNull(this object input)
     {
         if (input == null) return null;
         if (input is string)
@@ -29,17 +29,17 @@ public static class BoolTools
             ? value
             : null;
     }
-    
-    public static bool GetBoolOrDefault(object input, bool defaultValue = default)
+
+    public static bool GetBoolOrDefault(this object input, bool defaultValue = default)
     {
         var value = GetBoolOrNull(input);
         return value ?? defaultValue;
     }
 
-    public static bool GetBoolOrThrow(object input) => GetBoolOrThrow(input,
+    public static bool GetBoolOrThrow(this object input) => GetBoolOrThrow(input,
         input => new ModelValidationException($"Value {input} cannot be parsed as bool."));
 
-    public static bool GetBoolOrThrow<TException>(object input, Func<object, TException> createException)
+    public static bool GetBoolOrThrow<TException>(this object input, Func<object, TException> createException)
         where TException : Exception
     {
         var value = GetBoolOrNull(input);

@@ -5,7 +5,7 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class IntTools
 {
-    public static int? GetIntOrNull(object input)
+    public static int? GetIntOrNull(this object input)
     {
         if (input == null) return null;
         if (input is int inputInt) return inputInt;
@@ -15,16 +15,16 @@ public static class IntTools
             : null;
     }
 
-    public static int GetIntOrDefault(object input, int defaultValue = default)
+    public static int GetIntOrDefault(this object input, int defaultValue = default)
     {
         var value = GetIntOrNull(input);
         return value ?? defaultValue;
     }
 
-    public static int GetIntOrThrow(object input) => GetIntOrThrow(input,
+    public static int GetIntOrThrow(this object input) => GetIntOrThrow(input,
         input => new ModelValidationException($"Value {input} cannot be parsed as int."));
 
-    public static int GetIntOrThrow<TException>(object input, Func<object, TException> createException)
+    public static int GetIntOrThrow<TException>(this object input, Func<object, TException> createException)
         where TException : Exception
     {
         var value = GetIntOrNull(input);
