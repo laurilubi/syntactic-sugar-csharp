@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Syntactic.Sugar.Core.Collections;
@@ -73,6 +74,38 @@ public static class StringTools
             if (index > 0) sb.Append(separator);
             sb.Append(item);
         });
+        return sb.ToString();
+    }
+
+    public static string InitialCapital(this string input, CultureInfo culture = null)
+    {
+        culture ??= CultureInfo.InvariantCulture;
+
+        if (string.IsNullOrEmpty(input)) return input;
+        return input.Length == 1
+            ? input.ToUpper(culture)
+            : $"{input.Substring(0, 1).ToUpper(culture)}{input.Substring(1).ToLower(culture)}";
+    }
+
+    public static string Truncate(this string input, int maxLength, string dotdot = "")
+    {
+        if (input == null || input.Length <= maxLength)
+            return input;
+        return $"{input.Substring(0, maxLength - dotdot.Length)}{dotdot}";
+    }
+
+    public static string InsertAtPositions(this string input, IEnumerable<int> positions, string separator = " ")
+    {
+        var sortedPositions = positions
+            .Where(p => p < input.Length)
+            .OrderByDescending(p => p)
+            .ToList();
+        var sb = new StringBuilder(input);
+        foreach (var i in sortedPositions)
+        {
+            sb.Insert(i, separator);
+        }
+
         return sb.ToString();
     }
 }
