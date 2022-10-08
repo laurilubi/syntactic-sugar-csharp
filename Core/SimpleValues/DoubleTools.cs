@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Syntactic.Sugar.Core.Exceptions;
 
@@ -35,5 +36,15 @@ public static class DoubleTools
         var value = GetDoubleOrNull(input);
         AssertTools.Assert(value != null, () => createException(input));
         return value.Value;
+    }
+    
+    public static decimal GetMedian(IList<decimal> values)
+    {
+        var size = values.Count;
+        var middleIndex = size / 2;
+        var median = size % 2 == 0
+            ? (values[middleIndex] + values[middleIndex - 1]) / 2 
+            : values[middleIndex];
+        return median;
     }
 }
