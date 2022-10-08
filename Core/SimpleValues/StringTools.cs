@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Syntactic.Sugar.Core.Collections;
 using Syntactic.Sugar.Core.Exceptions;
 
 namespace Syntactic.Sugar.Core.SimpleValues;
@@ -54,5 +58,21 @@ public static class StringTools
     {
         AssertTools.Assert(StringHasValue(input), () => createException(input));
         return input.ToString();
+    }
+
+    public static string Join<T>(this IEnumerable<T> source, string separator = ",")
+    {
+        return Join(source, x => x, separator);
+    }
+
+    public static string Join<T>(this IEnumerable<T> source, Func<T, object> selector, string separator = ",")
+    {
+        var sb = new StringBuilder();
+        source.Select(selector).ForEach((item, index) =>
+        {
+            if (index > 0) sb.Append(separator);
+            sb.Append(item);
+        });
+        return sb.ToString();
     }
 }

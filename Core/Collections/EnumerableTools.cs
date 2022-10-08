@@ -7,6 +7,23 @@ namespace Syntactic.Sugar.Core.Collections;
 public static class EnumerableTools
 {
     /// <summary>
+    /// Overload for IEnumerable
+    /// </summary>
+    public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+    {
+        source.ToList().ForEach(action);
+    }
+
+    /// <summary>
+    /// Loop and keep track of element index
+    /// </summary>
+    public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
+    {
+        var index = 0;
+        foreach (var item in source) action(item, index++);
+    }
+    
+    /// <summary>
     /// Convert IEnumerable&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; to Dictionary&lt;TKey, TValue&gt;
     /// </summary>
     public static Dictionary<TKey, TValue> ToDictionary<TKey, TValue>(
