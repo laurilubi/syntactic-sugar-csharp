@@ -10,8 +10,8 @@ public class BoolToolsTests
     [InlineData(null, null)]
     [InlineData(false, false)] // bool
     [InlineData(true, true)] // bool
-    [InlineData(1, true)] // int
     [InlineData(0, false)] // int
+    [InlineData(1, true)] // int
     [InlineData(2, null)] // int
     [InlineData(-2, null)] // int
     [InlineData("", null)] // string
