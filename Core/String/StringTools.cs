@@ -5,7 +5,7 @@ using System.Text;
 using Syntactic.Sugar.Core.Collections;
 using Syntactic.Sugar.Core.Exceptions;
 
-namespace Syntactic.Sugar.Core.SimpleValues;
+namespace Syntactic.Sugar.Core.String;
 
 public static class StringTools
 {

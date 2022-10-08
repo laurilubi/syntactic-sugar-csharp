@@ -1,4 +1,4 @@
-﻿namespace Syntactic.Sugar.Core.SimpleValues;
+﻿namespace Syntactic.Sugar.Core.String;
 
 public enum StringHasValueOptions
 {
