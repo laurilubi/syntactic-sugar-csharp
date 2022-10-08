@@ -20,7 +20,7 @@ public static class AssertTools
     }
 
     [ContractAnnotation("halt <= condition: false")]
-    public static void Assert<TException>(this bool condition, Func<TException> createException)
+    public static void Assert<TException>(bool condition, Func<TException> createException)
         where TException : Exception
     {
         if (condition) return;
