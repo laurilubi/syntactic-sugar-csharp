@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace SyntacticSugar.Core.Exceptions;
+namespace Syntactic.Sugar.Core.Exceptions;
 
 [Serializable]
 public class ModelValidationException : Exception

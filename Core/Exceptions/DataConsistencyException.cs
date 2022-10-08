@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SyntacticSugar.Core.Exceptions;
+namespace Syntactic.Sugar.Core.Exceptions;
 
 [Serializable]
 public class DataConsistencyException : Exception

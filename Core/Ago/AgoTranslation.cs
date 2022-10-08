@@ -1,4 +1,4 @@
-﻿namespace SyntacticSugar.Core;
+﻿namespace Syntactic.Sugar.Core.Ago;
 
 public class AgoTranslation
 {

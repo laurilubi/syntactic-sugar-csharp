@@ -1,9 +1,7 @@
 ﻿using System;
-using SyntacticSugar.Core;
-using SyntacticSugar.Core.Exceptions;
-using SyntacticSugar.Core.SimpleValues;
+using Syntactic.Sugar.Core.Exceptions;
 
-namespace Core.Tools;
+namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class BoolTools
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SyntacticSugar.Core.Collections;
+namespace Syntactic.Sugar.Core.Collections;
 
 public static class DictionaryTools
 {

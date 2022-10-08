@@ -1,7 +1,6 @@
 ﻿using System;
-using SyntacticSugar.Core.Ago;
 
-namespace SyntacticSugar.Core;
+namespace Syntactic.Sugar.Core.Ago;
 
 public interface IAgoFormatter
 {
@@ -11,16 +10,16 @@ public interface IAgoFormatter
 
 public class AgoFormatter : IAgoFormatter
 {
-    private readonly AgoTranslation transation;
+    private readonly AgoTranslation _transation;
 
     public AgoFormatter()
     {
-        transation = AgoTranslation.English;
+        _transation = AgoTranslation.English;
     }
 
     public AgoFormatter(AgoTranslation transation)
     {
-        this.transation = transation;
+        this._transation = transation;
     }
 
     public string Format(TimeAgo ago) => Format(ago.Ago);
@@ -28,38 +27,38 @@ public class AgoFormatter : IAgoFormatter
     public string Format(TimeSpan ago)
     {
         var abs = new TimeSpan(Math.Abs(ago.Ticks));
-        if (abs.TotalSeconds < 1) return transation.Now;
+        if (abs.TotalSeconds < 1) return _transation.Now;
 
         var direction = ago.TotalSeconds > 0
-            ? transation.Ago
-            : transation.InFuture;
+            ? _transation.Ago
+            : _transation.InFuture;
 
         switch (abs.TotalSeconds)
         {
-            case < 2: return $"1 {transation.Second} {direction}";
-            case < 60: return $"{abs.TotalSeconds:F0} {transation.Seconds} {direction}";
+            case < 2: return $"1 {_transation.Second} {direction}";
+            case < 60: return $"{abs.TotalSeconds:F0} {_transation.Seconds} {direction}";
         }
 
         switch (abs.TotalMinutes)
         {
-            case < 2: return $"1 {transation.Minute} {direction}";
-            case < 60: return $"{abs.TotalMinutes:F0} {transation.Minutes} {direction}";
+            case < 2: return $"1 {_transation.Minute} {direction}";
+            case < 60: return $"{abs.TotalMinutes:F0} {_transation.Minutes} {direction}";
         }
 
         switch (abs.TotalHours)
         {
-            case < 2: return $"1 {transation.Hour} {direction}";
-            case < 24: return $"{abs.TotalHours:F0} {transation.Hours} {direction}";
+            case < 2: return $"1 {_transation.Hour} {direction}";
+            case < 24: return $"{abs.TotalHours:F0} {_transation.Hours} {direction}";
         }
 
         switch (abs.TotalDays)
         {
-            case < 2: return $"1 {transation.Day} {direction}";
-            case < 30: return $"{abs.TotalDays:F0} {transation.Days} {direction}";
-            case < 60: return $"1 {transation.Month} {direction}";
-            case < 365: return $"{(abs.TotalDays / 30):F0} {transation.Months} {direction}";
-            case < 2 * 365: return $"1 {transation.Year} {direction}";
-            default: return $"{(abs.TotalDays / 365):F0} {transation.Years} {direction}";
+            case < 2: return $"1 {_transation.Day} {direction}";
+            case < 30: return $"{abs.TotalDays:F0} {_transation.Days} {direction}";
+            case < 60: return $"1 {_transation.Month} {direction}";
+            case < 365: return $"{(abs.TotalDays / 30):F0} {_transation.Months} {direction}";
+            case < 2 * 365: return $"1 {_transation.Year} {direction}";
+            default: return $"{(abs.TotalDays / 365):F0} {_transation.Years} {direction}";
         }
     }
 }

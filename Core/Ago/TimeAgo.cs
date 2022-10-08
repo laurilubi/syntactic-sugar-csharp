@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SyntacticSugar.Core.Ago;
+namespace Syntactic.Sugar.Core.Ago;
 
 public class TimeAgo
 {

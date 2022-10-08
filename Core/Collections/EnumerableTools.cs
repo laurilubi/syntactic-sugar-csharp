@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SyntacticSugar.Core.Collections;
+namespace Syntactic.Sugar.Core.Collections;
 
 public static class EnumerableTools
 {

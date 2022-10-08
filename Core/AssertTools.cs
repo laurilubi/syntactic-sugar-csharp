@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace SyntacticSugar.Core;
+namespace Syntactic.Sugar.Core;
 
 public static class AssertTools
 {
