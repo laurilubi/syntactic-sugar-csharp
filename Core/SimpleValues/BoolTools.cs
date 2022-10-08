@@ -5,13 +5,6 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class BoolTools
 {
-    public static bool GetBoolOrDefault(object input, bool defaultValue = default)
-    {
-        if (input == null) return defaultValue;
-        var value = GetBoolOrNull(input);
-        return value ?? defaultValue;
-    }
-
     public static bool? GetBoolOrNull(object input)
     {
         if (input == null) return null;
@@ -35,6 +28,12 @@ public static class BoolTools
         return success
             ? value
             : null;
+    }
+    
+    public static bool GetBoolOrDefault(object input, bool defaultValue = default)
+    {
+        var value = GetBoolOrNull(input);
+        return value ?? defaultValue;
     }
 
     public static bool GetBoolOrThrow(object input) => GetBoolOrThrow(input,
