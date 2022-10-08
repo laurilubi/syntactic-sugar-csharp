@@ -5,7 +5,7 @@ namespace Syntactic.Sugar.Core.SimpleValues;
 
 public static class BoolTools
 {
-    public static bool GetBoolOrDefault(object input, bool defaultValue = false)
+    public static bool GetBoolOrDefault(object input, bool defaultValue = default)
     {
         if (input == null) return defaultValue;
         var value = GetBoolOrNull(input);
