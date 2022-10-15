@@ -1,6 +1,6 @@
-﻿namespace Syntactic.Sugar.Core.Ago;
+﻿namespace Syntactic.Sugar.Core.TimeAgo;
 
-public class AgoTranslation
+public class TimeAgoTranslation
 {
     public string Year { get; }
     public string Years { get; }
@@ -20,7 +20,7 @@ public class AgoTranslation
     public string Ago { get; }
     public string InFuture { get; }
 
-    public AgoTranslation(
+    public TimeAgoTranslation(
         string year, string month, string day,
         string hour, string minute, string second,
         string now,
@@ -49,7 +49,7 @@ public class AgoTranslation
         InFuture = inFuture;
     }
 
-    public static AgoTranslation English => new(
+    public static TimeAgoTranslation English => new(
         "year", "month", "day",
         "hour", "minute", "second",
         "now", "ago", "in the future");

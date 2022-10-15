@@ -1,25 +1,25 @@
 ﻿using System;
 
-namespace Syntactic.Sugar.Core.Ago;
+namespace Syntactic.Sugar.Core.TimeAgo;
 
-public interface IAgoFormatter
+public interface ITimeAgoFormatter
 {
     string Format(TimeAgo ago);
     string Format(TimeSpan ago);
 }
 
-public class AgoFormatter : IAgoFormatter
+public class TimeAgoFormatter : ITimeAgoFormatter
 {
-    private readonly AgoTranslation _transation;
+    private readonly TimeAgoTranslation _transation;
 
-    public AgoFormatter()
+    public TimeAgoFormatter()
     {
-        _transation = AgoTranslation.English;
+        _transation = TimeAgoTranslation.English;
     }
 
-    public AgoFormatter(AgoTranslation transation)
+    public TimeAgoFormatter(TimeAgoTranslation transation)
     {
-        this._transation = transation;
+        _transation = transation;
     }
 
     public string Format(TimeAgo ago) => Format(ago.Ago);
