@@ -134,6 +134,6 @@ public class EnumTests
 
         Assert.Equal(TestIntEnum.EIGHT, values[2].Value);
         Assert.Equal("EIGHT", values[2].Name);
-        Assert.Equal(null, values[2].Description);
+        Assert.Null(values[2].Description);
     }
 }
