@@ -81,7 +81,6 @@ public class TimeAgoTests
         Assert.Equal(ago, laterAgo);
     }
 
-
     [Theory]
     [InlineData(DateTimeKind.Local)]
     [InlineData(DateTimeKind.Utc)]
