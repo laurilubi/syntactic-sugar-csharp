@@ -2,6 +2,6 @@
 
 namespace Syntactic.Sugar.Core.Exceptions;
 
-public class CodeConsistencyException : Exception
+public class CodeInconsistencyException : Exception
 {
 }

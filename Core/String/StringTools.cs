@@ -20,7 +20,7 @@ public static class StringTools
             StringHasValueOptions.NotNull => value != null,
             StringHasValueOptions.NotNullEmpty => string.IsNullOrEmpty(value),
             StringHasValueOptions.NotNullEmptyWhitespace => string.IsNullOrWhiteSpace(value),
-            _ => throw new CodeConsistencyException()
+            _ => throw new CodeInconsistencyException()
         };
     }
 
@@ -45,7 +45,7 @@ public static class StringTools
                 StringHasValueOptions.NotNull => "String value cannot be null.",
                 StringHasValueOptions.NotNullEmpty => "String value cannot be null or empty.",
                 StringHasValueOptions.NotNullEmptyWhitespace => "String value cannot be null, empty or whitespace.",
-                _ => throw new CodeConsistencyException()
+                _ => throw new CodeInconsistencyException()
             };
             return new ModelValidationException(errorMessage);
         });
