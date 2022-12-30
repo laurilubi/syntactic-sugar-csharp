@@ -77,7 +77,7 @@ public static class StringTools
         return sb.ToString();
     }
 
-    public static string InitialCapital(this string input, CultureInfo culture = null)
+    public static string FirstUppercase(this string input, CultureInfo culture = null)
     {
         culture ??= CultureInfo.InvariantCulture;
 
@@ -87,11 +87,16 @@ public static class StringTools
             : $"{input.Substring(0, 1).ToUpper(culture)}{input.Substring(1).ToLower(culture)}";
     }
 
-    public static string Truncate(this string input, int maxLength, string dotdot = "")
+    public static string Truncate(this string input, int maxLength, string suffix = "...")
     {
-        if (input == null || input.Length <= maxLength)
-            return input;
-        return $"{input.Substring(0, maxLength - dotdot.Length)}{dotdot}";
+        AssertTools.Assert(input != null, () => new ArgumentNullException(nameof(input)));
+        AssertTools.Assert(suffix != null, () => new ArgumentNullException(nameof(suffix)));
+        AssertTools.Assert(suffix.Length <= maxLength, () => new ArgumentException(
+            $"{nameof(maxLength)},{nameof(suffix)}",
+            $"Parameter {nameof(maxLength)}={maxLength} cannot be less than {nameof(suffix)} length: {suffix}"));
+
+        if (input.Length <= maxLength) return input;
+        return input.Substring(0, maxLength - suffix.Length) + suffix;
     }
 
     public static string InsertAtPositions(this string input, IEnumerable<int> positions, string separator = " ")
