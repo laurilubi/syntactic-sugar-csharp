@@ -51,6 +51,14 @@ public struct Vector
         directionCache = null;
     }
 
+    public Vector(Direction direction, double length)
+    {
+        VX = Math.Cos(Angle.ToRadian(direction.Degree)) * length;
+        VY = Math.Sin(Angle.ToRadian(direction.Degree)) * length;
+        lengthCache = null;
+        directionCache = null;
+    }
+
     public Point AsPoint() => new Point(VX, VY);
 
     public double Length
@@ -75,10 +83,10 @@ public struct Vector
 
     public static bool operator ==(Vector a, Vector b) => a.Key == b.Key;
     public static bool operator !=(Vector a, Vector b) => a.Key != b.Key;
-    public static Vector operator +(Vector a, Vector b) => new Vector(a.VX + b.VX, a.VY + b.VY);
-    public static Vector operator -(Vector a, Vector b) => new Vector(a.VX - b.VX, a.VY - b.VY);
-    public static Vector operator *(Vector v, double d) => new Vector(v.VX * d, v.VY * d);
-    public static Vector operator /(Vector v, double d) => new Vector(v.VX / d, v.VY / d);
+    public static Vector operator +(Vector a, Vector b) => new(a.VX + b.VX, a.VY + b.VY);
+    public static Vector operator -(Vector a, Vector b) => new(a.VX - b.VX, a.VY - b.VY);
+    public static Vector operator *(Vector v, double d) => new(v.VX * d, v.VY * d);
+    public static Vector operator /(Vector v, double d) => new(v.VX / d, v.VY / d);
     public override string ToString() => Key;
 
     // TODO tests
