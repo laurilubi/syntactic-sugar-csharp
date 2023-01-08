@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Syntactic.Sugar.Core.Collections;
+using Syntactic.Sugar.Core.SimpleValues;
 using Syntactic.Sugar.Core.String;
 
 namespace Syntactic.Sugar.Core.Enum;
@@ -108,6 +109,19 @@ public static class EnumTools
         var enumType = GetEnumType<T>();
         var cacheItem = GetCached(enumType);
         return cacheItem.ByValue.Values.ToList();
+    }
+
+    public static List<T> GetValuesTyped<T>()
+    {
+        return GetValues<T>()
+            .Select(v => v.Value)
+            .Cast<T>()
+            .ToList();
+    }
+
+    public static bool IsValidValue<T>(T value)
+    {
+        return value.IsOneOf(GetValuesTyped<T>());
     }
 
     private static Type GetEnumType(System.Enum value)
